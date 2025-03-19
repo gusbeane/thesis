@@ -32,8 +32,8 @@
 \usepackage{natbib}
 
 % fonts that are nicer than defaults
-\usepackage[sc]{mathpazo}
-\usepackage{courier}
+% \usepackage[sc]{mathpazo}
+% \usepackage{courier}
 
 % Use 8-bit encoding that has 256 glyphs, pretty please
 \usepackage[utf8]{inputenc}
@@ -45,9 +45,39 @@
 
 % math support
 \usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{gensymb}
 
 % Slightly tweak font spacing for aesthetics
 \usepackage{microtype}
+\usepackage{enumitem}
+
+\usepackage{caption}    % Helps with subcaptions
+\usepackage{subcaption} % For individual subfigures
+
+% AAS macros
+\usepackage{aas_macros}
+\usepackage{hyperref}
+\newcommand{\dodoi}[1]{\href{https://doi.org/#1}{doi:#1}}
+
+\usepackage{color}
+\usepackage{graphicx}
+\graphicspath{{ch2/}}
+
+\usepackage{deluxetable}
+% \usepackage{changepage,parskip}
+\usepackage{changepage}
+
+% \usepackage[utf8]{inputenc}
+% \usepackage[T1]{fontenc}
+
+\usepackage[LGR,T1]{fontenc}
+\usepackage[utf8]{inputenc}   % utf8 is required
+
+\newcommand{\textgreek}[1]{\begingroup\fontencoding{LGR}\selectfont#1\endgroup}
+
+% \usepackage{bibentry}
+% \nobibliography*
 
 % You need the footmisc package with the stable option if you want to have
 % footnotes inside section titles, for example to say that a particular chapter
@@ -55,20 +85,54 @@
 % comma between two consecutive footnotes
 \usepackage[stable,multiple]{footmisc}
 
+\newcommand{\Msun}{\ensuremath{M_{\odot}}}
+\newcommand{\Gyr}{\ensuremath{\textrm{Gyr}}}
+\newcommand{\Myr}{\ensuremath{\textrm{Myr}}}
+\newcommand{\yr}{\ensuremath{\textrm{yr}}}
+\newcommand{\kpc}{\ensuremath{\textrm{kpc}}}
+\newcommand{\ckpc}{\ensuremath{\textrm{ckpc}}}
+\newcommand{\pc}{\ensuremath{\textrm{pc}}}
+\newcommand{\kms}{\ensuremath{\textrm{km}/\textrm{s}}}
+\newcommand{\tocite}{\textcolor{blue}{cite}}
+\newcommand{\FeH}{\ensuremath{[\textrm{Fe}/\textrm{H}]}}
+\newcommand{\MgFe}{\ensuremath{[\textrm{Mg}/\textrm{Fe}]}}
+\newcommand{\OFe}{\ensuremath{[\textrm{O}/\textrm{Fe}]}}
+\newcommand{\alphaFe}{\ensuremath{[\alpha/\textrm{Fe}]}}
+\newcommand{\tform}{\ensuremath{t_{\textrm{form}}}}
+\newcommand{\dex}{\ensuremath{\textrm{dex}}}
+\newcommand{\Msunyr}{\ensuremath{\Msun/\textrm{yr}}}
+\newcommand{\Msunyrdex}{\ensuremath{\Msun/\textrm{yr}/\textrm{dex}}}
+\newcommand{\Atmax}{\ensuremath{A_{2,\textrm{max}}}}
+
+\newcommand{\rhalf}{\ensuremath{r_{\star,\textrm{half}}}}
+\newcommand{\SFR}{\ensuremath{\textrm{SFR}}}
+
+\newcommand{\RCR}{\ensuremath{R_{\textrm{CR}}}}
+\newcommand{\Rot}{\ensuremath{\mathcal{R}}}
+\newcommand{\Vc}{\ensuremath{V_{\textrm{c}} }}
+\newcommand{\PS}{\ensuremath{\Omega_{\textrm{p}}}}
+\newcommand{\Rb}{\ensuremath{R_{\textrm{b}}}}
+
+\newcommand{\Nbody}{$N$-body}
+\newcommand{\AREPO}{\textsc{AREPO}}
+\newcommand{\SMUGGLE}{SMUGGLE}
+
+\newcommand{\doi}[2]{\href{http://dx.doi.org/#1}{{#2}}}
+\newcommand{\arxiv}[3]{\href{http://arxiv.org/abs/#1}{{#2}\textcolor{black}{, \textit{Submitted to #3}}\ \textcolor{grey}{\texttt{arXiv:#1}}}}
+\newcommand{\arxivaccept}[3]{\href{http://arxiv.org/abs/#1}{{#2}\textcolor{black}{, \textit{Accepted in #3}}\ \textcolor{black}{\texttt{arXiv:#1}}}}
 
 % Nicer captions
 \RequirePackage[font=small,format=plain,labelfont=bf,textfont=it]{caption}
 \addtolength{\abovecaptionskip}{1ex}
 \addtolength{\belowcaptionskip}{1ex}
 
-
 %%%%%%%%%%%%%%%% COMPULSORY FIELDS %%%%%%%%%%%%%%%%
 
 \title{Rising from the Ashes\\How the Milky Way Got Its Scars} % needs to match title on DAC
-\author{Angus Beane} % full name as it appears on your GSAS record, needs
+\author{Angus William Beane} % full name as it appears on your GSAS record, needs
                           % to match name on DAC
 \degreename{Doctor of Philosophy}
-\degreefield{Astronomy} % Official name of subject as listed in GSAS
+\degreefield{Astronomy \& Astrophysics} % Official name of subject as listed in GSAS
                                 % handbook
 \department{The Department of Astronomy} % official name of department
 \degreemonth{March} % Month of Defense (i.e. month when DAC was signed)
@@ -91,13 +155,13 @@
 \thesistitlepage
 \copyrightpage
 \begin{abstract}
-  An abstract should be less than 350 words. Here's some filler text. \blindtext
+  Understanding ancient events in the Milky Way's history is essential for building a consistent picture of galaxy formation and evolution, bridging stellar and chemical evolution models with the extragalactic population. Our galaxy experienced three simultaneous, transformative events $8\,\Gyr$ ago: our last major merger, the formation of a bar, and a transition chemical enrichment leading to an $\alpha$-element bimodality. The history of these events is encoded in the present-day observable properties of stars: dynamics (positions and velocities), chemical compositions, and ages. In this thesis, we will make use of numerical simulations tailored to understanding how these historical processes of the Milky Way led to its present-day properties. First, we will propose a solution to the mystery of why the bar rotates rapidly when it is old enough to have slowed down by now. Second, we will propose that our last major merger led to the emergence of the $\alpha$-bimodality via a metallicity-dependent halt in star formation. Finally, we will demonstrate that the formation of the bar might have triggered the formation of the bimodality through the same mechanism. This work demonstrates the rich understandings that can be gleaned from idealized simulations specifically tailored to the Milky Way.
 \end{abstract}
 
 % Center headings for table of contents, LOT, and LOF and make them smaller so
 % that "Abstract", "Acknowledgments" and "Contents" all look alike. Comment out
 % if you want the default. If you want more control, use the "tocloft" package.
-\renewcommand{\contentsname}{\protect\centering\protect\Large Contents}
+\renewcommand{\contentsname}{\protect\centering\protect\Large Table of Contents}
 \renewcommand{\listtablename}{\protect\centering\protect\Large List of Tables}
 \renewcommand{\listfigurename}{\protect\centering\protect\Large List of Figures}
 
@@ -105,14 +169,9 @@
 
 % The rest of the front matter: Lists of tables, figures, dedication and
 % acknowledment is optional. Comment out whatever you don't like
-\listoftables
-\listoffigures
-\begin{acknowledgments}
-  \blindtext
-\end{acknowledgments}
-\begin{dedication}
-  To my parents
-\end{dedication}
+% \listoftables
+% \listoffigures
+\input{ack_ded.tex}
 
 
 %%%%%%%%%%%%%%%% MAIN BODY %%%%%%%%%%%%%%%%
@@ -122,18 +181,30 @@
 % think most committees expect you to have one.
 % Don't number the intro chapter, but add to to the table of contents
 \addcontentsline{toc}{chapter}{Introduction}
-\chapter*{Introduction}\label{ch:intro}
-\input{intro}w
+\chapter{Introduction}\label{ch:intro}
+\input{intro/intro}
 
+\chapter{Stellar Bars in Isolated Gas-Rich Spiral Galaxies Do Not Slow Down\footnote{This chapter originally appeared as Beane,~A., Hernquist,~L., D'Onghia,~E., Marinacci,~F., Conroy,~C., Qi,~J., 
+Sales,~L.~V., Torrey,~P., \& Vogelsberger,~M., 2023, \doi{10.3847/1538-4357/ace2b9}{Stellar Bars in Isolated 
+Gas-rich Spiral Galaxies Do Not Slow Down}, \textit{Astrophys.\,J.} \textbf{953}~173.}}\label{ch:gasbar}
+% \textit{This chapter originally appeared as Beane,~A., Hernquist,~L., D'Onghia,~E., Marinacci,~F., Conroy,~C., Qi,~J., 
+% Sales,~L.~V., Torrey,~P., \& Vogelsberger,~M., 2023, \doi{10.3847/1538-4357/ace2b9}{Stellar Bars in Isolated 
+% Gas-rich Spiral Galaxies Do Not Slow Down}, \textit{Astrophys.\,J.} \textbf{953}~173.}
+\input{ch2/ch2.tex}
 
-\chapter{Hook\footnote{Co-authored with my advisor}}\label{ch:1}
-\input{chapter1}
+\chapter{A Metallicity-Dependent Star Formation Gap Splits the Milky Way's \texorpdfstring{$\alpha$}{α}-Sequences\footnote{This chapter originally appeared as Beane,~A., 2024, \arxivaccept{2407.07985}{Rising from the Ashes: A Metallicity-Dependent Star Formation Gap Splits the Milky Way's $\alpha$-Sequences}{Astrophys.~J.}}}\label{ch:GSEgas}
+% \begin{minipage}{\linewidth}
+  % \raggedright
+  % \textit{This chapter originally appeared as Beane,~A., 2024, \arxivaccept{2407.07985}{Rising from the Ashes: A Metallicity-Dependent Star Formation Gap Splits the Milky Way's $\alpha$-Sequences}{Astrophys.~J.}}
+% \end{minipage}
+\input{ch3/ch3.tex}
 
-\chapter{Line\footnote{Co-authored with my other advisor}}\label{ch:2}
-\input{chapter2}
+\chapter{The Bar-driven Abundance Bimodality of the Milky Way\footnote{This chapter originally appeared as Beane,~A., Johnson,~J.~W., Semenov,~V., Hernquist,~L., Chandra,~V., \& Conroy,~C. \arxivaccept{2410.21580}{Rising from the Ashes~II: The Bar-driven Abdundance Bimodality of the Milky Way}{Astrophys.~J.}}}\label{ch:Mgdec}
+% \textit{This chapter originally appeared as Beane,~A., Johnson,~J.~W., Semenov,~V., Hernquist,~L., Chandra,~V., \& Conroy,~C. \arxivaccept{2410.21580}{Rising from the Ashes~II: The Bar-driven Abdundance Bimodality of the Milky Way}{Astrophys.~J.}}
+\input{ch4/ch4.tex}
 
-\chapter{Sinker}\label{ch:3}
-\input{chapter3}
+\chapter{Conclusions}\label{ch:conclusions}
+\input{ch5/ch5.tex}
 
 %%%%%%%%%%%%%%%% BACK MATTER %%%%%%%%%%%%%%%%
 

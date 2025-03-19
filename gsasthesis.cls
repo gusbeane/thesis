@@ -1,3 +1,5 @@
+% !TEX root = ms.tex
+
 % This is file `gsasthesis.cls',
 %
 % LaTeX2e class for publishing a PhD thesis according to Harvard GSAS
@@ -62,7 +64,7 @@
   \begin{titlepage}
     \thispagestyle{empty}
     \null\vfil
-    %\addcontentsline{toc}{section}{Title Page} % seems silly to add it
+    \addcontentsline{toc}{section}{Title Page} % seems silly to add it
     \begin{center}
       {\LARGE\bfseries {\@title}}\\[3em]
       A dissertation presented\\
@@ -88,9 +90,11 @@
 {
   \thispagestyle{empty}
   \null\vfil
+  \addcontentsline{toc}{section}{Copyright}
   \begin{center}
     \copyright\ \@degreeyear\ \@author\\
-    All rights reserved.
+    Distributed under a \href{https://creativecommons.org/licenses/by-nc-sa/4.0/}{CC BY-NC-SA 4.0} License.
+
   \end{center}
   \vfil\null
   \clearpage
@@ -138,6 +142,7 @@
 \renewcommand{\tableofcontents}%
 {
   \begin{spacing}{1.2} % 1.2 looks nicer than 1
+  \addcontentsline{toc}{section}{Table of Contents}
     \LaTeXTOC
   \end{spacing}
 }
@@ -166,6 +171,16 @@
 \newenvironment{dedication}
 {
   \clearpage
+  \addcontentsline{toc}{section}{Dedication}
+  \par\vspace*{.2\textheight}
+  \begin{quotation}
+}
+{\end{quotation}\clearpage}
+
+\newenvironment{epigraph}
+{
+  \clearpage
+  \addcontentsline{toc}{section}{Epigraph}
   \par\vspace*{.2\textheight}
   \begin{quotation}
 }
