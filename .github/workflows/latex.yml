@@ -25,6 +25,13 @@ jobs:
           ~/.TinyTeX/bin/*/tlmgr path add
           sudo apt-get install texlive-latex-extra texlive-fonts-recommended texlive-publishers texlive-fonts-extra biber
 
+      # Step 3: Generate commit info file
+      - name: Generate commit file
+        run: |
+          COMMIT_DATE=$(git log -1 --format=%ci ${{ github.sha }})
+          echo "\\newcommand{\\commithash}{${{ github.sha }}}" > commit.tex
+          echo "\\newcommand{\\committime}{$COMMIT_DATE}" >> commit.tex
+
       # Step 3: Compile LaTeX and run BibTeX
       - name: Compile LaTeX with BibTeX
         run: |
